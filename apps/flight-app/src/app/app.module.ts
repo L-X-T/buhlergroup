@@ -22,6 +22,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { PassengersModule } from './passengers/passengers.module';
 import { LoggerModule } from '@flight-workspace/logger-lib';
+import { CustomLogFormatterService } from './shared/logging/custom-log-formatter.service';
 
 @NgModule({
   imports: [
@@ -41,7 +42,7 @@ import { LoggerModule } from '@flight-workspace/logger-lib';
     StoreRouterConnectingModule.forRoot({ stateKey: 'router', routerState: RouterState.Minimal }),
     EffectsModule.forRoot([]),
 
-    LoggerModule.forRoot({ enableDebug: true })
+    LoggerModule.forRoot({ enableDebug: true, logFormatterType: CustomLogFormatterService })
   ],
   declarations: [AppComponent, SidebarComponent, NavbarComponent, HomeComponent, BasketComponent],
   providers: [],
