@@ -21,6 +21,7 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { PassengersModule } from './passengers/passengers.module';
+import { LoggerModule } from '@flight-workspace/logger-lib';
 
 @NgModule({
   imports: [
@@ -38,7 +39,9 @@ import { PassengersModule } from './passengers/passengers.module';
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     StoreRouterConnectingModule.forRoot({ stateKey: 'router', routerState: RouterState.Minimal }),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([]),
+
+    LoggerModule.forRoot({ enableDebug: true })
   ],
   declarations: [AppComponent, SidebarComponent, NavbarComponent, HomeComponent, BasketComponent],
   providers: [],
